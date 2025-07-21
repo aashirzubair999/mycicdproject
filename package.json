@@ -1,11 +1,16 @@
 {
+<<<<<<< HEAD
   "name": "vite-react-typescript-starter",
+=======
+  "name": "vite-starter",
+>>>>>>> c8f77855d0faaf86a92fac92371ff71759a38bbd
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+<<<<<<< HEAD
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -31,5 +36,11 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
+=======
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.5"
+>>>>>>> c8f77855d0faaf86a92fac92371ff71759a38bbd
   }
 }
