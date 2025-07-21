@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Aashir - Ultra Futuristic .NET Developer Portfolio</title>
+    <meta name="description" content="Muhammad Aashir - Visionary .NET Developer crafting the future with cutting-edge technology. Specializing in .NET Core, Blazor, and revolutionary web solutions." />
+    <meta name="keywords" content="Muhammad Aashir, .NET Developer, C#, Blazor, Full Stack Developer, Futuristic Web Development, Ultra Modern Design, Islamabad, Pakistan" />
+    <meta name="author" content="Muhammad Aashir" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Muhammad Aashir - Ultra Futuristic .NET Developer Portfolio" />
+    <meta property="og:description" content="Visionary .NET Developer building the future with revolutionary technology and stunning digital experiences" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/portfolio-preview.jpg" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Muhammad Aashir - Futuristic .NET Developer" />
+    <meta name="twitter:description" content="Crafting the future with .NET Core, Blazor, and revolutionary web technologies" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    
+    <!-- Performance Hints -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Aashir",
+      "jobTitle": ".NET Developer",
+      "description": "Passionate .NET Developer specializing in building robust and scalable web applications",
+      "url": "https://muhammad-aashir-portfolio.com",
+      "sameAs": [
+        "https://linkedin.com/in/muhammad-aashir",
+        "https://github.com/muhammad-aashir"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Islamabad",
+        "addressCountry": "Pakistan"
+      },
+      "knowsAbout": [
+        ".NET Core",
+        "C#",
+        "Blazor",
+        "SQL Server",
+        "Web API",
+        "Bootstrap",
+        "AWS",
+        "DevOps"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Enhanced Smooth Scrolling and Interactions -->
+    <script>
+      // Enhanced smooth scrolling and navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for anchor links
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        links.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+              const offsetTop = targetSection.offsetTop - 100; // Account for fixed navbar
+              
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+              
+              // Close mobile menu if open
+              const navbarCollapse = document.querySelector('.navbar-collapse');
+              if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+              }
+            }
+          });
+        });
+        
+        // Enhanced scroll spy functionality
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.ultra-nav-link');
+        
+        function updateActiveNavLink() {
+          const scrollPos = window.scrollY + 150;
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+              navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          });
+        }
+        
+        // Throttled scroll event for better performance
+        let ticking = false;
+        function requestTick() {
+          if (!ticking) {
+            requestAnimationFrame(updateActiveNavLink);
+            ticking = true;
+            setTimeout(() => { ticking = false; }, 16);
+          }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+        updateActiveNavLink(); // Initial call
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+            }
+          });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        const animateElements = document.querySelectorAll('.tech-card, .project-card, .ultra-timeline-item, .ultra-tool-item');
+        animateElements.forEach(el => observer.observe(el));
+        
+        // Skill progress bars animation
+        const skillBars = document.querySelectorAll('.skill-progress-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const progressBar = entry.target;
+              const width = progressBar.style.width;
+              progressBar.style.width = '0%';
+              setTimeout(() => {
+                progressBar.style.width = width;
+              }, 200);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        skillBars.forEach(bar => skillObserver.observe(bar));
+        
+        // Enhanced cursor following effect
+        const cursor = document.querySelector('.custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+        
+        function animateCursor() {
+          const dx = mouseX - cursorX;
+          const dy = mouseY - cursorY;
+          
+          cursorX += dx * 0.1;
+          cursorY += dy * 0.1;
+          
+          if (cursor) {
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+          }
+          
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        // Interactive elements cursor effects
+        const interactiveElements = document.querySelectorAll('a, button, .ultra-btn, .ultra-contact-btn, .ultra-tool-item');
+        
+        interactiveElements.forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            if (cursor) cursor.style.transform = 'scale(2)';
+          });
+          
+          el.addEventListener('mouseleave', () => {
+            if (cursor) cursor.style.transform = 'scale(1)';
+          });
+        });
+        
+        // Parallax effect for hero section
+        const heroSection = document.querySelector('.ultra-hero-section');
+        const heroContent = document.querySelector('.hero-content');
+        const heroVisual = document.querySelector('.ultra-hero-visual');
+        
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * -0.5;
+          
+          if (heroContent) {
+            heroContent.style.transform = `translateY(${rate}px)`;
+          }
+          
+          if (heroVisual) {
+            heroVisual.style.transform = `translateY(${rate * 0.3}px)`;
+          }
+        });
+        
+        // Dynamic background particles
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'dynamic-particle';
+          particle.style.cssText = `
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            left: ${Math.random() * 100}vw;
+            top: 100vh;
+            animation: particleRise ${3 + Math.random() * 4}s linear forwards;
+          `;
+          
+          document.body.appendChild(particle);
+          
+          setTimeout(() => {
+            particle.remove();
+          }, 7000);
+        }
+        
+        // Add particle rise animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes particleRise {
+            to {
+              transform: translateY(-100vh) rotate(360deg);
+              opacity: 0;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+        
+        // Performance optimization: Reduce animations on low-end devices
+        const isLowEndDevice = navigator.hardwareConcurrency < 4 || navigator.deviceMemory < 4;
+        
+        if (isLowEndDevice) {
+          document.body.classList.add('reduced-motion');
+          const reducedMotionStyle = document.createElement('style');
+          reducedMotionStyle.textContent = `
+            .reduced-motion * {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+            }
+          `;
+          document.head.appendChild(reducedMotionStyle);
+        }
+      });
+      
+      // Service Worker for offline functionality (optional)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
